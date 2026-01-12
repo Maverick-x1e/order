@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>點餐</title>
+</head>
+<body>
+  <h2>點餐系統</h2>
+
+  <select id="item">
+    <option value="雞腿便當" data-price="100">雞腿便當 $100</option>
+    <option value="排骨便當" data-price="90">排骨便當 $90</option>
+  </select>
+
+  <input type="number" id="qty" value="1" min="1" />
+
+  <p>總金額：<span id="total">100</span> 元</p>
+
+  <button onclick="submitOrder()">送出訂單</button>
+
+  <script>
+    const item = document.getElementById("item");
+    const qty = document.getElementById("qty");
+    const total = document.getElementById("total");
+
+    function calc() {
+      const price = item.selectedOptions[0].dataset.price;
+      total.textContent = price * qty.value;
+    }
+
+    item.onchange = qty.oninput = calc;
+
+    function submitOrder() {
+      alert("前端成功！");
+    }
+  </script>
+</body>
+</html>
